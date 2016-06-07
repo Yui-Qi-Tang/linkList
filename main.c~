@@ -1,0 +1,89 @@
+#include "stdio.h"
+#include "stdlib.h"
+
+typedef struct NODE
+{
+    int value;
+				struct NODE *next;
+}node;
+
+/*
+void addNode2(node* head,int value)
+{
+    ptr = new node;
+	   curt = new node;
+	   ptr -> value = value;
+        
+	   prev = head;
+	   curt = head -> next;
+	   while(curt != NULL)
+	   { 
+	       prev = curt;
+	       curt = curt -> next;   
+	   }
+    ptr -> next = curt;	
+	   prev -> next = ptr;			 
+}
+*/
+
+
+void dump(node* head)
+{
+    node *iterator = head;
+    while(iterator != NULL)
+				{
+				    printf("%d\n",iterator->value);
+								iterator = iterator->next;
+				}
+				printf("NULL");
+}
+
+/*Add new Node to tail of list */
+void addNode(node* listHead, int valueOfNewNode)
+{
+    /*Create new node instance*/
+    node *newNode = malloc(sizeof(node));
+				/*Set new value for new node from external*/
+				newNode->value=valueOfNewNode;
+
+    /*Pointer to head of list*/
+				node *pCurt = listHead; // Curt = current
+				/*Pointer to next of head of list*/
+				node *pCurtNext = listHead->next;
+    /*Move pCurt and pCurtNext until pNext is NULL*/
+				while(pCurtNext != NULL)
+				{
+				    pCurt = pCurtNext;
+								pCurtNext = pCurtNext->next;
+				}
+				/*next of new node is pNext, because pNext point to NULL now.*/
+				newNode->next = pCurtNext;
+				/*Add new node for pHead->next*/
+    pCurt->next = newNode;
+
+}
+
+void main()
+{   
+				node *list = malloc(sizeof(node));
+				list -> value = 0;
+				list -> next = NULL;
+
+				addNode(list, 99);
+				addNode(list, 100);
+				addNode(list, 101);
+    //Node 2
+//				node *node2 = malloc(sizeof(node));
+//				node2 -> value = 100;
+				
+				//Add node2 in list
+				//head -> node2 -> NULL
+				
+//				head ->next = node2;
+//				node2 ->next= NULL;
+				
+				dump(list);
+				
+    
+    
+}
