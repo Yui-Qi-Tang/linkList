@@ -1,0 +1,14 @@
+#include "linkList.h"
+
+void freeList(node *list)
+{
+    node *tmp;
+
+				while(list != NULL)
+				{
+				    tmp = list;
+				    list = list -> next;
+				    free(tmp);				
+				}
+}
+
