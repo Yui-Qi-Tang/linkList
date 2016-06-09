@@ -18,6 +18,7 @@ typedef unsigned char true;
 node* createHead();
 void freeList(node*);
 void addNode(node*, int);
+void delNode(node*, int);
 void dump(node*);
 unsigned char isExist(node*, int);
 

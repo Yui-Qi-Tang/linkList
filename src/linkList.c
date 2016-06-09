@@ -119,6 +119,37 @@ void addNode(node* listHead, int valueOfNewNode)
 }// End of addNode
 
 /**
+ *  Delete Node from specify list 
+ *
+ *  @param          node*, int
+ *  @return         none.
+ *  @see
+ *  @since          0.01
+ **/
+
+void delNode(node* listHead, int target)
+{
+				node* prev = listHead;
+    node* curt = prev->next;
+    //printf("%p,%p \n", prev, curt); 
+				while(curt  != NULL)
+				{
+				    if(curt -> value == target){
+					       prev -> next = curt -> next;					
+												free(curt);
+												return;
+								}
+								prev = curt;
+								curt = curt -> next;
+				}
+				printf("%d does not in list\n", target);
+		
+
+}// End of delNode
+
+
+
+/**
  *  Check whether the specify valus is exist specify list or not.
 	*  Note : Because there is no bool data type in C,
  *         so I use unsigned char to present bool
@@ -131,9 +162,9 @@ void addNode(node* listHead, int valueOfNewNode)
 unsigned char isExist(node *list,int target)
 {
     //Init. pointer at head of list
-				node* head = list;
+				node* head = list -> next;
 				
-				while(head -> next != NULL)
+				while(head  != NULL)
 				{
 								//Check whether the target is exist or not
 								//if exist return true
