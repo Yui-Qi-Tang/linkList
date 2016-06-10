@@ -36,7 +36,7 @@
  **/
 node* createHead(){
     node *head = malloc(sizeof(node));
-				head -> value = 0;
+				head -> value = 123456;
 				head -> next = NULL;
 				return head;    
 }// End of createHead()
@@ -181,3 +181,54 @@ unsigned char isExist(node *list,int target)
 }// End of isExist
 
 
+/**
+ *  Insert sort algorithm
+ *  
+ *  @param          node*
+ *  @return         none.
+ *  @see
+ *  @since          0.01
+ **/
+void insertSort(node* listHead)
+{
+    if(listHead -> next = NULL)
+				{
+				    printf("This list is empty");
+								return;
+				}
+    node *i;
+				node *j = listHead -> next -> next;
+    int key;
+				while(j != NULL)
+				{
+        key = j -> value;
+        
+				}
+
+}// End of insertSort()
+
+/**
+ *  Get previous node in target of list
+ *  
+ *  @param          node*, node*
+ *  @return         none.
+ *  @see
+ *  @since          0.01
+ **/
+node* getPrev(node* list, node* target)
+{
+				if(target == list)
+				{
+				    return NULL;
+				}
+    node* i = list;
+				while(i != NULL)
+				{
+				    if(i -> next == target)
+								{
+								    return i;
+								}
+								i = i -> next;
+				}
+				return NULL;
+}

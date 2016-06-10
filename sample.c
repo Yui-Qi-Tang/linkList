@@ -9,6 +9,7 @@ void main()
 				addNode(list, 101);
 				dump(list);
 
+
     printf("*Delete 100 of list\n");
 				delNode(list, 100);
 				dump(list); 
@@ -17,7 +18,7 @@ void main()
 				delNode(list, 99);
 				dump(list);
 
-				printf("*Delete 100 of list\n");
+				printf("*Delete 101 of list\n");
     delNode(list, 101);
 				dump(list);
 
@@ -34,6 +35,12 @@ void main()
 				dump(list);
 
 
+				
+    node* testNode = list -> next -> next;
+    printf("Find previous node of %d\n",testNode->value);
+    
+				node * prevNode = getPrev(list, testNode);
+				printf("%d\n",prevNode->value);
 
 				freeList(list);
 				

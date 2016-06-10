@@ -19,6 +19,8 @@ node* createHead();
 void freeList(node*);
 void addNode(node*, int);
 void delNode(node*, int);
+void insertSort(node*);
+node* getPrev(node*, node*);
 void dump(node*);
 unsigned char isExist(node*, int);
 
