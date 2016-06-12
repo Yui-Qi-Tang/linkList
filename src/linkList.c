@@ -191,17 +191,37 @@ unsigned char isExist(node *list,int target)
  **/
 void insertSort(node* listHead)
 {
-    if(listHead -> next = NULL)
+    if(listHead -> next == NULL)
 				{
 				    printf("This list is empty");
 								return;
 				}
-    node *i;
 				node *j = listHead -> next -> next;
-    int key;
+			 node *i;
+				node *iNext;
+				node *iPrev;
+    node *key;
 				while(j != NULL)
 				{
-        key = j -> value;
+        key = j;
+								i = getPrev(listHead,j);     // i = j-1
+								
+								
+								while((i != listHead) && (i->value > key->value))
+								{
+								    iNext = i -> next;
+            iPrev = getPrev(listHead,i);
+
+												iPrev -> next = iNext;
+												iNext -> next = i;
+
+												i = getPrev(listHead,i);
+								}
+        iNext = i-> next;
+							 iNext = key;
+
+
+								j = j -> next;
         
 				}
 
@@ -211,17 +231,14 @@ void insertSort(node* listHead)
  *  Get previous node in target of list
  *  
  *  @param          node*, node*
- *  @return         none.
+ *  @return         node*
  *  @see
  *  @since          0.01
  **/
-node* getPrev(node* list, node* target)
+node* getPrev(node* head, node* target)
 {
-				if(target == list)
-				{
-				    return NULL;
-				}
-    node* i = list;
+				
+    node* i = head;
 				while(i != NULL)
 				{
 				    if(i -> next == target)
@@ -231,4 +248,4 @@ node* getPrev(node* list, node* target)
 								i = i -> next;
 				}
 				return NULL;
-}
+}// End of getPrev

@@ -1,1 +1,1 @@
-gcc -o2 -o sample_exe -I ./inc sample.c ./src/*.c
+gcc -o2 -g -o sample_exe -I ./inc sample.c ./src/*.c
