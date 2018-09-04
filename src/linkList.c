@@ -3,7 +3,7 @@
  *  @brief      Defines Application 
  *  @author     Yui Qi Tang (yqtang1222@gmail.com)
  *  @date       06/09/2016 created.
- *  @date       06/09/2016 last modified.
+ *  @date       04/09/2018 last modified.
  *  @version    0.01
  *  @section    License
  *
@@ -36,9 +36,9 @@
  **/
 node* createHead(){
     node *head = malloc(sizeof(node));
-				head -> value = 123456;
-				head -> next = NULL;
-				return head;    
+	head -> value = 123456;
+	head -> next = NULL;
+	return head;    
 }// End of createHead()
 
 /**
@@ -53,13 +53,13 @@ node* createHead(){
 void dump(node* head)
 {
     node *iterator = head->next;
-				printf("Head -> ");
+	printf("Head -> ");
     while(iterator != NULL)
-				{
-				    printf("%d -> ",iterator->value);
-								iterator = iterator->next;
-				}
-				printf("Tail\n");
+	{
+	    printf("%d -> ",iterator->value);
+		iterator = iterator->next;
+	}
+	printf("Tail\n");
 }// End of dump()
 
 
@@ -76,12 +76,12 @@ void freeList(node *list)
 {
     node *tmp;
 
-				while(list != NULL)
-				{
-				    tmp = list;
-				    list = list -> next;
-				    free(tmp);				
-				}
+	while(list != NULL)
+	{
+	    tmp = list;
+	    list = list -> next;
+	    free(tmp);				
+	}
 }// End of freeList()
 
 
@@ -98,22 +98,22 @@ void addNode(node* listHead, int valueOfNewNode)
 {
     /*Create new node instance*/
     node *newNode = malloc(sizeof(node));
-				/*Set new value for new node from external*/
-				newNode->value=valueOfNewNode;
+	/*Set new value for new node from external*/
+	newNode->value=valueOfNewNode;
 
     /*Pointer to head of list*/
-				node *pCurt = listHead; // Curt = current
-				/*Pointer to next of head of list*/
-				node *pCurtNext = listHead->next;
+	node *pCurt = listHead; // Curt = current
+	/*Pointer to next of head of list*/
+	node *pCurtNext = listHead->next;
     /*Move pCurt and pCurtNext until pNext is NULL*/
-				while(pCurtNext != NULL)
-				{
-				    pCurt = pCurtNext;
-								pCurtNext = pCurtNext->next;
-				}
-				/*next of new node is pNext, because pNext point to NULL now.*/
-				newNode->next = pCurtNext;
-				/*Add new node for pHead->next*/
+	while(pCurtNext != NULL)
+	{
+	    pCurt = pCurtNext;
+		pCurtNext = pCurtNext->next;
+	}
+	/*next of new node is pNext, because pNext point to NULL now.*/
+	newNode->next = pCurtNext;
+	/*Add new node for pHead->next*/
     pCurt->next = newNode;
 
 }// End of addNode
@@ -129,29 +129,27 @@ void addNode(node* listHead, int valueOfNewNode)
 
 void delNode(node* listHead, int target)
 {
-				node* prev = listHead;
+	node* prev = listHead;
     node* curt = prev->next;
     //printf("%p,%p \n", prev, curt); 
-				while(curt  != NULL)
-				{
-				    if(curt -> value == target){
-					       prev -> next = curt -> next;					
-												free(curt);
-												return;
-								}
-								prev = curt;
-								curt = curt -> next;
-				}
-				printf("%d does not in list\n", target);
-		
-
+	while(curt  != NULL)
+	{
+	    if(curt -> value == target){
+		    prev -> next = curt -> next;					
+			free(curt);
+			return;
+		}
+		prev = curt;
+		curt = curt -> next;
+	}
+	printf("%d does not in list\n", target);
 }// End of delNode
 
 
 
 /**
  *  Check whether the specify valus is exist specify list or not.
-	*  Note : Because there is no bool data type in C,
+ *  Note : Because there is no bool data type in C,
  *         so I use unsigned char to present bool
  *  
  *  @param          node*, int
@@ -162,22 +160,22 @@ void delNode(node* listHead, int target)
 unsigned char isExist(node *list,int target)
 {
     //Init. pointer at head of list
-				node* head = list -> next;
+	node* head = list -> next;
 				
-				while(head  != NULL)
-				{
-								//Check whether the target is exist or not
-								//if exist return true
-								//otherwise go next node of list
-				    if(head -> value == target)
-								{
-								    return true;
-								}
-								//next node of list
-								head = head->next;
-				}//fi
-				//not exist
-				return false;
+	while(head != NULL)
+	{
+	    //Check whether the target is exist or not
+		//if exist return true
+		//otherwise go next node of list
+		if(head -> value == target)
+		{
+		    return true;
+		} // fi
+		//next node of list
+		head = head->next;
+	}// while
+	//not exist
+	return false;
 }// End of isExist
 
 
@@ -192,39 +190,31 @@ unsigned char isExist(node *list,int target)
 void insertSort(node* listHead)
 {
     if(listHead -> next == NULL)
-				{
-				    printf("This list is empty");
-								return;
-				}
-				node *j = listHead -> next -> next;
-			 node *i;
-				node *iNext;
-				node *iPrev;
+	{
+	    printf("This list is empty");
+		return;
+	}
+	node *j = listHead -> next -> next;
+	node *i;
+	node *iNext;
+	node *iPrev;
     node *key;
-				while(j != NULL)
-				{
+	while(j != NULL)
+	{
         key = j;
-								i = getPrev(listHead,j);     // i = j-1
-								
-								
-								while((i != listHead) && (i->value > key->value))
-								{
-								    iNext = i -> next;
+		i = getPrev(listHead,j); // i = j-1								
+		while((i != listHead) && (i->value > key->value))
+		{
+		    iNext = i -> next;
             iPrev = getPrev(listHead,i);
-
-												iPrev -> next = iNext;
-												iNext -> next = i;
-
-												i = getPrev(listHead,i);
-								}
+			iPrev -> next = iNext;
+			iNext -> next = i;
+			i = getPrev(listHead,i);
+		}
         iNext = i-> next;
-							 iNext = key;
-
-
-								j = j -> next;
-        
-				}
-
+		iNext = key;
+		j = j -> next;
+	}
 }// End of insertSort()
 
 /**
@@ -236,16 +226,15 @@ void insertSort(node* listHead)
  *  @since          0.01
  **/
 node* getPrev(node* head, node* target)
-{
-				
+{	
     node* i = head;
-				while(i != NULL)
-				{
-				    if(i -> next == target)
-								{
-								    return i;
-								}
-								i = i -> next;
-				}
-				return NULL;
+	while(i != NULL)
+	{
+	    if(i -> next == target)
+		{
+		    return i;
+		}
+		i = i -> next;
+	}
+	return NULL;
 }// End of getPrev
