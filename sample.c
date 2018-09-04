@@ -2,11 +2,11 @@
 
 int main()
 {   
-	node* list = createHead();
+    node* list = createHead();
     printf("*Add 99, 100 and 101 to list\n");
 	addNode(list, 99);
 	addNode(list, 100);
-	addNode(list, 101);
+    addNode(list, 101);
 	dump(list);
 
     printf("*Delete 100 of list\n");
@@ -39,11 +39,11 @@ int main()
 	node * prevNode = getPrev(list, testNode);
 	printf("%d\n",prevNode->value);
 /*
-				printf("*Add 99, 100 and 101 to list\n");
-				addNode(list, 99);
-				addNode(list, 100);
-				addNode(list, 101);
-				dump(list);
+    printf("*Add 99, 100 and 101 to list\n");
+	addNode(list, 99);
+	addNode(list, 100);
+	addNode(list, 101);
+	dump(list);
 */
     printf("insert sort\n");
 	insertSort(list);
