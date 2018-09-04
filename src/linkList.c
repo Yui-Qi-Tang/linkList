@@ -50,19 +50,15 @@ node* createHead(){
  *  @since          0.01
  **/
 
-void dump(node* head)
-{
+void dump(node* head) {
     node *iterator = head->next;
-	printf("Head -> ");
-    while(iterator != NULL)
-	{
-	    printf("%d -> ",iterator->value);
-		iterator = iterator->next;
+    printf("Head -> ");
+    while(iterator != NULL) {
+        printf("%d -> ",iterator->value);
+        iterator = iterator->next;
 	}
 	printf("Tail\n");
 }// End of dump()
-
-
 
 /**
  *  free list
